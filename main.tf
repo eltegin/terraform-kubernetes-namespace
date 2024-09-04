@@ -6,11 +6,11 @@ resource "kubernetes_namespace" "this" {
 
 resource "kubernetes_resource_quota" "example" {
   metadata {
-    name = "terraform-example"
+    name = "pod-quota"
   }
   spec {
     hard = {
-      pods = 10
+      pods = var.number_of_pods
     }
     scopes = ["BestEffort"]
   }
